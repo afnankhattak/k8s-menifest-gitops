@@ -16,7 +16,7 @@ node {
                         sh "git config user.name afnankhattak"
                         //sh "git switch master"
                         sh "cat deployement.yaml"
-                        sh "sed -i 's+afnan39/profile-app.*+afnan39/profile-app:v1.0.${DOCKERTAG}+g' deployement.yaml"
+                        sh "sed -i 's+afnan39/profile-app.*+afnan39/profile-app:v1.0.${DOCKERTAG}+' deployement.yaml"
                         //sh "sed -i 's+raj80dockerid/test.*+raj80dockerid/test:${DOCKERTAG}+g' deployment.yaml"
 
                         sh "cat deployement.yaml"
