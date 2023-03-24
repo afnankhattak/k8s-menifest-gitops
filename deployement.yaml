@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
-  labels:
-    app: profileapp
   name: profileapp
+  labels:
+    type: deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: profileapp
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: profileapp
+        type: pod
     spec:
       containers:
-      - image: afnan39/profile-app:v1.0.31
-        name: profileapp
-        resources: {}
-status: {}
+      - name: ui-app
+        image: afnan39/profile-app:v1.0.31
+        ports:
+        - containerPort: 8080
+          name: tcp
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: lb-service
-  labels:
-    app: lb-service
+  name: ui-app
 spec:
   type: NodePort
-  ports:
-  - port: 80
-    targetPort: 5000
   selector:
     app: profileapp
+    type: pod
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 32000
