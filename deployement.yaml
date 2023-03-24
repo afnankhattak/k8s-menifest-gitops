@@ -18,7 +18,7 @@ spec:
         app: profileapp
     spec:
       containers:
-      - image: afnan39/profile-app:29
+      - image: afnan39/profile-app:v1.0.31
         name: profileapp
         resources: {}
 status: {}
