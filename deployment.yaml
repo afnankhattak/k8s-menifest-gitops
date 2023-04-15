@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: profileapp
+  name: ui-app
   labels:
     type: deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: profileapp
+      app: ui-app
   template:
     metadata:
       labels:
-        app: profileapp
+        app: ui-app
         type: pod
     spec:
       containers:
-      - name: profileapp
-        image: afnan39/profile-app:v1.0.34
+      - name: ui-app
+        image: image: afnan39/profile-app:v1.0.34
         ports:
         - containerPort: 8080
           name: tcp
@@ -25,14 +25,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: profileapp
+  name: ui-app
 spec:
   type: NodePort
   selector:
-    app: profileapp
+    app: ui-app
     type: pod
   ports:
   - protocol: TCP
-    port: 81
-    targetPort: 8081
+    port: 80
+    targetPort: 8080
     nodePort: 31000
+        
+        
