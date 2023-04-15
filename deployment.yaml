@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: profileapp
-        image: afnan39/profile-app:v1.0.34
+        image: afnan39/profile-app:v1.0.33
         ports:
         - containerPort: 8080
           name: tcp
