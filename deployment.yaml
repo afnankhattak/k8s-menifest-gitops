@@ -1,33 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: profileapp
+  labels:
+    type: deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx
-  replicas: 1
+      app: profileapp
   template:
     metadata:
       labels:
-        app: nginx
+        app: profileapp
+        type: pod
     spec:
       containers:
-      - name: nginx
-        image: image: afnan39/profile-app:v1.0.33
+      - name: profileapp
+        image: afnan39/profile-app:v1.0.34
         ports:
-        - containerPort: 80 
-
+        - containerPort: 8080
+          name: tcp
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: profileapp
 spec:
-  selector: 
-    app: nginx
-  type: NodePort  
+  type: NodePort
+  selector:
+    app: profileapp
+    type: pod
   ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 31000
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 31000
