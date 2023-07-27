@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: pizzafrontend
-        image: [YOUR DOCKER USER NAME]/pizzafrontend:latest
+        image: afnan39/pizzafrontend:latest
         ports:
         - containerPort: 80
         env:
