@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: afnan39/profile-app:v1.0.40
+        image: afnan39/profile-app:v1.0.41
         ports:
         - containerPort: 80 
 
